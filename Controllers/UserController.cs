@@ -20,5 +20,25 @@ namespace Juan.Controllers
         {
             return await _dbc.Usuarios.ToListAsync();
         }
+
+        [HttpPost]
+        public async Task<ActionResult<User>> Grabar(User user)
+        {
+            _dbc.Usuarios.Add(user);
+            await _dbc.SaveChangesAsync();
+            
+            return CreatedAtAction(nameof(GetUsuario), new { id = user.Id }, user);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUsuario(int id)
+        {
+            var usuario = await _dbc.Usuarios.FirstOrDefaultAsync(u => u.Id == id);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+            return usuario;
+        }
     }
 }
