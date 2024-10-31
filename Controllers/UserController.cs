@@ -40,5 +40,44 @@ namespace Juan.Controllers
             }
             return usuario;
         }
+        
+        [HttpDelete]
+        public async Task<ActionResult<User>> Eliminar(int id)
+        {
+            var usuario = await _dbc.Usuarios.FirstOrDefaultAsync(u => u.Id == id);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+            _dbc.Usuarios.Remove(usuario);
+            await _dbc.SaveChangesAsync();
+            return Ok(usuario);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<User>> Editar(int id, User user)
+        {
+            var usuario = await _dbc.Usuarios.FirstOrDefaultAsync(u => u.Id == id);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+            usuario.Name = user.Name;
+            usuario.LastName = user.LastName;
+            usuario.Email = user.Email;
+            usuario.Password = user.Password;
+
+            try
+            {
+                _dbc.Usuarios.Update(usuario);
+                await _dbc.SaveChangesAsync();
+                return Ok(usuario);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
+        }
     }
 }
