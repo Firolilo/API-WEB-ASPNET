@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lenovo\\OneDrive\\Desktop\\Proyectos\\Juan\\Juan\\Juan.csproj": {}
+    "C:\\Users\\lenovo\\OneDrive\\Desktop\\Proyectos\\Juan\\Juan-BackEnd\\Juan.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lenovo\\OneDrive\\Desktop\\Proyectos\\Juan\\Juan\\Juan.csproj": {
+    "C:\\Users\\lenovo\\OneDrive\\Desktop\\Proyectos\\Juan\\Juan-BackEnd\\Juan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lenovo\\OneDrive\\Desktop\\Proyectos\\Juan\\Juan\\Juan.csproj",
+        "projectUniqueName": "C:\\Users\\lenovo\\OneDrive\\Desktop\\Proyectos\\Juan\\Juan-BackEnd\\Juan.csproj",
         "projectName": "Juan",
-        "projectPath": "C:\\Users\\lenovo\\OneDrive\\Desktop\\Proyectos\\Juan\\Juan\\Juan.csproj",
+        "projectPath": "C:\\Users\\lenovo\\OneDrive\\Desktop\\Proyectos\\Juan\\Juan-BackEnd\\Juan.csproj",
         "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lenovo\\OneDrive\\Desktop\\Proyectos\\Juan\\Juan\\obj\\",
+        "outputPath": "C:\\Users\\lenovo\\OneDrive\\Desktop\\Proyectos\\Juan\\Juan-BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,6 +50,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "HotChocolate": {
+              "target": "Package",
+              "version": "[15.0.0-p.13, )"
+            },
+            "HotChocolate.AspNetCore": {
+              "target": "Package",
+              "version": "[15.0.0-p.13, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.7, )"

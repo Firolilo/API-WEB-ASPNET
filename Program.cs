@@ -1,9 +1,29 @@
 using Juan.Data;
 using Microsoft.EntityFrameworkCore;
+using HotChocolate;
+using Juan.GraphQL;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();  
+    });
+});
+
 builder.Services.AddControllers();
+builder.Services
+    .AddGraphQLServer()
+    .AddQueryType<Query>()
+    .AddMutationType<Mutation>() 
+    .AddType<AutorType>();        
+    
+
+  
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -15,6 +35,11 @@ builder.Services.AddDbContext<MyDBContext>(
     );
 
 var app = builder.Build();
+
+app.MapGraphQL();
+
+app.UseCors("AllowAll");
+
 app.MapControllers();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +50,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthorization();
 
 var summaries = new[]
 {

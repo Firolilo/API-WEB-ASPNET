@@ -11,5 +11,6 @@ namespace Juan.Data
         }
 
         public DbSet<User> Usuarios { get; set; }
+        public DbSet<Autor> Autores { get; set; }
     }
 }

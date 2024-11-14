@@ -30,7 +30,7 @@ namespace Juan.Controllers
             return CreatedAtAction(nameof(GetUsuario), new { id = user.Id }, user);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<User>> GetUsuario(int id)
         {
             var usuario = await _dbc.Usuarios.FirstOrDefaultAsync(u => u.Id == id);
@@ -41,7 +41,7 @@ namespace Juan.Controllers
             return usuario;
         }
         
-        [HttpDelete]
+        [HttpDelete("{id:int}")]
         public async Task<ActionResult<User>> Eliminar(int id)
         {
             var usuario = await _dbc.Usuarios.FirstOrDefaultAsync(u => u.Id == id);
@@ -54,7 +54,7 @@ namespace Juan.Controllers
             return Ok(usuario);
         }
 
-        [HttpPut]
+        [HttpPut("{id:int}")]
         public async Task<ActionResult<User>> Editar(int id, User user)
         {
             var usuario = await _dbc.Usuarios.FirstOrDefaultAsync(u => u.Id == id);
@@ -77,7 +77,6 @@ namespace Juan.Controllers
             {
                 throw new Exception(ex.Message);
             }
-            
         }
     }
 }
